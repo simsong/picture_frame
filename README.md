@@ -23,6 +23,8 @@ References for full screen:
 * https://www.sitepoint.com/html5-full-screen-api/
 * https://www.w3schools.com/howto/howto_js_fullscreen.asp
 
+References for loading images:
+* https://blog.teamtreehouse.com/using-jquery-asynchronously-loading-image
 
 
 ## Option 2;
