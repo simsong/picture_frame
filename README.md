@@ -11,10 +11,19 @@ Notes and technology to turn a RaspberryPI into a digital picture frame.
 - Use a raspberry pi connected to a network and the screen.
 - Display the photos with:
 
+## Screen:
+Have a cron script that turns the screen on and off, depending on time of day.
+  --- Or we can just have it turn on every 5 minutes...
+
 ## Option 1
 - a browser in full-screen mode.
-- Separately, have a cron script that turns the screen on and off, depending on time of day.
-  --- Or we can just have it turn on every 5 minutes...
+
+References for full screen:
+* https://developers.google.com/web/updates/2011/10/Let-Your-Content-Do-the-Talking-Fullscreen-API
+* https://www.sitepoint.com/html5-full-screen-api/
+* https://www.w3schools.com/howto/howto_js_fullscreen.asp
+
+
 
 ## Option 2;
 - Option #2 - some sort of Python program
@@ -28,9 +37,6 @@ sudo apt-get install python3-pil python3-pil.imagetk
 
 
 # References
-
-
-# How to
 ## Set up Raspberry PI
 - https://www.raspberrypi.org/documentation/remote-access/ssh/
     sudo systemctl enable ssh
@@ -40,13 +46,15 @@ Ssh doesn't allow access to an account without a password, so you will need to c
 
 - https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-ubuntu-quickstart
     sudo adduser simsong
-    usermod -aG sudo simsong
+    sudo usermod -aG sudo simsong
 
 
 - Set up locals:
 
-localedef -i en_US -c -f UTF-8 en_US.UTF-8
-dpkg-reconfigure locales
+```
+sudo localedef -i en_US -c -f UTF-8 en_US.UTF-8
+sudo dpkg-reconfigure locales
+```
 
 Set /etc/default/locale to look like:
 ```
@@ -74,6 +82,8 @@ Apparently all that's needed is setting the `DISPLAY` environment variable; no p
 * `xset dpms force standby` - not sure what this does
 * `xset dpms [standby] [suspend] [off] -
 
+References:
+* https://raspberrypi.stackexchange.com/questions/22039/turning-on-hdmi-programmatically-doesnt-work
 
 ## Full-screen API
 - https://stackoverflow.com/questions/7836204/chrome-fullscreen-api
@@ -137,5 +147,7 @@ sudo cp /opt/local/etc/apache2/extra/httpd-userdir.conf.orig /opt/local/etc/apac
 5. It appears that your Apachedir is now /Users/$HOME/Sites/. Test by creating a file `hello.txt` and see if you can read it with `http://localhost/~$USER/hello.txt`
 
 
+## Server
+Perhaps I shoudl build something based on flask?
 
 
